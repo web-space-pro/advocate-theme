@@ -1,0 +1,9 @@
+a {
+  @apply transition-all ease-in-out;
+  &:hover{
+    @apply text-accent;
+  }
+}
+.t-overflow{
+  overflow: hidden;
+}
