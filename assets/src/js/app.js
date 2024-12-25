@@ -3,6 +3,7 @@ try {
    // require("lazysizes/lazysizes.min");
    // require("./vendors");
    require("./modules/menu");
+    require("./modules/smoke");
   //  require("./modules/input_mask");
    require("./modules/generall");
   //  require("./modules/productPost-tabs");
