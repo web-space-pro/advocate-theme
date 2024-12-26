@@ -170,7 +170,7 @@ get_header();
                                 <div class="absolute w-10 h-10 -top-8 -right-8 bg-accent blur-[7.5rem] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                             </div>
                         </div>
-                        <div class="panel xs:grid-cols-3 md:gap-x-6 grid grid-cols-1  absolute top-0  w-full justify-center transition duration-500  invisible opacity-0 scale-90" id="panel-1">
+                        <div class="panel xs:grid-cols-3 md:gap-x-6 grid grid-cols-1  absolute top-0  w-full justify-center transition duration-500 invisible opacity-0 scale-90" id="panel-1">
                             <div class="sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold  text-white-800 transition-all duration-500 relative">
                                 <a href="#">Проблемные вопросы участия в СВО</a>
                                 <div class="absolute opacity-0 bottom-3 right-6 group-hover:right-3 group-hover:opacity-100 transition-all duration-500">
@@ -212,7 +212,7 @@ get_header();
                                 <div class="absolute w-10 h-10 -top-8 -right-8 bg-accent blur-[7.5rem] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                             </div>
                         </div>
-                        <div class="panel xs:grid-cols-3 md:gap-x-6 grid grid-cols-1  absolute top-0  w-full justify-center transition duration-500  invisible opacity-0 scale-90" id="panel-2">
+                        <div class="panel xs:grid-cols-3 md:gap-x-6 grid grid-cols-1  absolute top-0  w-full justify-center transition duration-500 invisible opacity-0 scale-90" id="panel-2">
                             <div class="sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold  text-white-800 transition-all duration-500 relative">
                                 <a href="#">Проблемные вопросы участия в СВО</a>
                                 <div class="absolute opacity-0 bottom-3 right-6 group-hover:right-3 group-hover:opacity-100 transition-all duration-500">
