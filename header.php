@@ -149,6 +149,6 @@
         </div>
     </div>
 
-    <main id="page" class="site flex flex-col min-h-screen overflow-x-hidden text-white-800">
+    <main id="page" class="site flex flex-col overflow-x-hidden text-white-800">
 
 
