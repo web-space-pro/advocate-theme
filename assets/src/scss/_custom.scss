@@ -54,3 +54,11 @@ a {
     transform: rotate(-360deg);
   }
 }
+
+.tabList{
+  .active{
+    span{
+      @apply bg-gray-600 text-white-800;
+    }
+  }
+}

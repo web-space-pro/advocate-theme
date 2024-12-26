@@ -44,6 +44,7 @@ module.exports = {
           900: '#ffffff'
         },
         gray:{
+          300: '#404040',
           400: '#bfbfbf',
           500: '#808080',
           600: '#2b332c',
@@ -63,7 +64,7 @@ module.exports = {
         'icon': '0 0 5px #cca670',
       },
       backgroundImage: {
-        'bg-gradient': "linear-gradient(90deg, #0ecfd2 0%, #076a6c 100%)",
+        'bg-gradient': "linear-gradient(180deg, #1a1f1b 0%, #001202 100%);",
         'bg-link': 'linear-gradient(90deg, #0ecccf 0%, #086b6d 100%)',
       }
     },

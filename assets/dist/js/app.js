@@ -12,10 +12,10 @@ try {
   // require("lazysizes/lazysizes.min");
   // require("./vendors");
   __webpack_require__(/*! ./modules/menu */ "./assets/src/js/modules/menu.js");
-  __webpack_require__(/*! ./modules/smoke */ "./assets/src/js/modules/smoke.js");
+  //require("./modules/smoke");
   //  require("./modules/input_mask");
   __webpack_require__(/*! ./modules/generall */ "./assets/src/js/modules/generall.js");
-  //  require("./modules/productPost-tabs");
+  __webpack_require__(/*! ./modules/tabs */ "./assets/src/js/modules/tabs.js");
   // require("./modules/swiper");
 } catch (e) {
   console.log('JS ERROR!!!', e);
@@ -87,89 +87,77 @@ try {
 
 /***/ }),
 
-/***/ "./assets/src/js/modules/smoke.js":
-/*!****************************************!*\
-  !*** ./assets/src/js/modules/smoke.js ***!
-  \****************************************/
+/***/ "./assets/src/js/modules/tabs.js":
+/*!***************************************!*\
+  !*** ./assets/src/js/modules/tabs.js ***!
+  \***************************************/
 /***/ (() => {
 
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-var canvas = document.getElementById("canvas");
-var Fog = /*#__PURE__*/function () {
-  function Fog(x, y, tamanho, direction, velocity) {
-    _classCallCheck(this, Fog);
-    this.x = x;
-    this.y = y;
-    this.width = tamanho.w;
-    this.height = tamanho.h;
-    this.me = document.createElement("div");
-    this.direction = direction;
-    this.velocity = velocity;
-  }
-  return _createClass(Fog, [{
-    key: "create",
-    value: function create() {
-      this.me.style.width = this.width + "px";
-      this.me.style.height = this.height + "px";
-      this.me.style.backgroundColor = "pink";
-      this.me.style.position = "absolute";
-      this.me.style.opacity = 0.7;
-      this.me.style.filter = "blur(40px)";
-      canvas.appendChild(this.me);
-      this.me.style.borderRadius = "120%";
-    }
-  }, {
-    key: "animation",
-    value: function animation() {
-      this.me.style.left = this.x + "px";
-      this.me.style.top = this.y + "px";
-      switch (this.direction) {
-        case 0:
-          this.x -= this.velocity;
-          if (this.x + this.width < 0) {
-            this.x = canvas.clientWidth + this.width;
-          }
-          break;
-        case 1:
-          this.x += this.velocity;
-          if (this.x + this.width > canvas.width) {
-            this.me.style.left = -this.width + "px";
-          }
-          break;
+var itemTab = document.querySelectorAll(".tab"),
+  currentTab = document.querySelector(".tab-indicator"),
+  panelBox = document.querySelector(".box-panel"),
+  panelList = document.querySelectorAll(".panel"),
+  maxHeight = 0;
+itemTab.forEach(function (item) {
+  item.addEventListener("click", function () {
+    itemTab.forEach(function (tabs) {
+      tabs.classList.remove("active");
+    });
+    item.classList.add("active");
+    var getAttrControls = item.getAttribute("aria-controls");
+    panelList.forEach(function (panelItem) {
+      var itemID = panelItem.getAttribute("id");
+      var setHeightPanel = panelItem.clientHeight;
+      if (getAttrControls === itemID) {
+        panelBox.style.height = "".concat(setHeightPanel, "px");
       }
-    }
-  }]);
-}();
-function CreateNeb() {
-  array === null || array === void 0 || array.forEach(function (ele) {
-    ele.create();
-    ele.animation();
+      getAttrControls === itemID ? (panelItem.classList.remove("invisible", "opacity-0", "scale-90"), panelItem.classList.add("visible", "opacity-100", "scale-100")) : (panelItem.classList.add("invisible", "opacity-0", "scale-90"), panelItem.classList.remove("visible", "opacity-100", "scale-100"));
+    });
   });
-  requestAnimationFrame(CreateNeb);
+});
+panelList.forEach(function (panelItem) {});
+var setHeightPanel = panelList[0].clientHeight;
+panelBox.style.height = "".concat(setHeightPanel, "px");
+var container = document.querySelector('.tabList');
+var isTouching = false;
+var startY = 0;
+var scrollStart = 0;
+var targetScroll = 0; // Место, к которому хотим прокрутить
+var currentScroll = 0; // Текущее положение прокрутки
+var ease = 0.6; // Степень плавности прокрутки (чем меньше, тем плавнее)
+
+// Для касания (свайпа на мобильных устройствах)
+container.addEventListener('touchstart', function (e) {
+  isTouching = true;
+  startX = e.touches[0].clientX; // Начальная позиция пальца по оси X
+  scrollStart = container.scrollLeft; // Начальное положение скролла по оси X
+});
+container.addEventListener('touchmove', function (e) {
+  if (!isTouching) return;
+  var touchMove = e.touches[0].clientX;
+  var deltaX = touchMove - startX; // Сколько мы провели пальцем по оси X
+
+  container.scrollLeft = scrollStart - deltaX; // Обновляем положение скролла по оси X
+  e.preventDefault(); // Предотвращаем стандартное поведение прокрутки
+});
+container.addEventListener('touchend', function () {
+  isTouching = false;
+});
+
+// Функция для плавного перемещения прокрутки
+function smoothScroll() {
+  if (Math.abs(currentScroll - targetScroll) > 0.5) {
+    // Если текущее положение не слишком близко к целевому
+    currentScroll += (targetScroll - currentScroll) * ease; // Линейное движение с замедлением
+    container.scrollLeft = currentScroll; // Обновляем положение скролла
+
+    // Запрашиваем следующий кадр анимации
+    requestAnimationFrame(smoothScroll);
+  }
 }
-var array = [
-//  new Fog(200, 200, { w: 200, h: 200 }, 0, 0.5),
-//  new Fog(600, 120, { w: 100, h: 150 }, 0, 0.6),
-new Fog(70, 140, {
-  w: 230,
-  h: 210
-}, 0, 0.7),
-//  new Fog(600, 20, { w: 40, h: 30 }, 0, 0.4),
-// new Fog(300, 200, { w: 200, h: 200 }, 0, 0.5),
-//  new Fog(400, 120, { w: 70, h: 90 }, 0, 0.6),
-new Fog(10, 140, {
-  w: 230,
-  h: 210
-}, 0, 0.7), new Fog(0, 20, {
-  w: 100,
-  h: 100
-}, 0, 0.4)];
-CreateNeb();
+
+// Запускаем плавную прокрутку
+smoothScroll();
 
 /***/ }),
 
