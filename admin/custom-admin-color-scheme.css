@@ -1,0 +1,23 @@
+/* custom-admin-color-scheme.css */
+body.wp-admin {
+    --wp-admin-theme-color: #0c3825;
+    --wp-admin-theme-color-darker-10: #164919;
+    --wp-admin-theme-color-darker-20: #1d6b4a;
+}
+
+#wpadminbar {
+    background: #1d6b4a;
+}
+
+#adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
+    background-color: #1d6b4a;
+}
+
+#adminmenu a {
+    color: #ffffff;
+}
+
+#adminmenu li:hover a, #adminmenu .wp-has-current-submenu a.wp-has-current-submenu, #adminmenu .wp-has-current-submenu a.menu-top {
+    background-color: #1d6b4a;
+    color: #ffffff;
+}

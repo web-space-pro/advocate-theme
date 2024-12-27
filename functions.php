@@ -13,6 +13,7 @@ require 'inc-functions/functions-widget.php';
 require 'inc-functions/functions-tags.php';
 require 'inc-functions/functions-breadcrumbs.php';
 require 'inc-functions/functions-ajax.php';
+require 'inc-functions/functions-admin-wp.php';
 
 
 
