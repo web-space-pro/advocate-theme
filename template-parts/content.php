@@ -29,7 +29,6 @@
                 </div><!-- .entry-meta -->
             <?php endif; ?>
         </header>
-
         <?php advocate_theme_post_thumbnail(); ?>
 
         <div class="entry-content">

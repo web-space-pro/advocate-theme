@@ -41,16 +41,18 @@ header{
   }
 }
 .menu-mobile{
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
   height: 100%;
-  width: 0%;
+  width: 75%;
   opacity: 0;
+  transform: translateX(-70%);
   transition: all 600ms cubic-bezier(.62,.04,.3,1.56);
   transition-delay: 100ms;
   &.show{
-    width: 75%;
+    transform: translateX(0);
     opacity: 1;
   }
 

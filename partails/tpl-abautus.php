@@ -29,7 +29,7 @@ if ( function_exists('get_field') ) {
                     <?php if(!empty($experience)) : ?>
                     <div class="sm:mt-8 sm:grid-cols-3 lg:gap-6 mb-6 mt-6 grid grid-cols-1 gap-3">
                         <?php foreach( $experience as $e ): ?>
-                        <div class="px-5 py-4 rounded-2xl bg-black-500 flex flex-col self-stretch justify-between">
+                        <div class="px-5 relative py-4 rounded-2xl bg-black-500 flex flex-col self-stretch justify-between z-[1] transition-all ease-in-out duration-300 hover:scale-105">
                             <h4 class="md:text-2xl text-xl text-accent font-semibold"><?=$e['title']?></h4>
                             <p class="text-xs text-white-800"><?=$e['text']?></p>
                         </div>

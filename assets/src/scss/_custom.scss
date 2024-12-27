@@ -2,7 +2,22 @@ html,body{
   scroll-behavior: smooth;
 }
 .btn{
-  @apply md:text-base inline-block border text-xs rounded-lg font-semibold uppercase transition ease-in-out duration-500;
+  @apply md:text-base relative inline-block border text-xs rounded-lg font-semibold uppercase transition ease-in-out duration-500;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: .5s;
+  }
+  &:hover:before {
+    box-shadow: 0 0 15px #cca670;
+  }
+  &:hover {
+    box-shadow: 0 0 5px #cca670;
+  }
 }
 .btn-outline{
   @apply px-8 py-4 text-gray-400;
@@ -55,10 +70,12 @@ a {
   }
 }
 
-.tabList{
-  .active{
-    span{
-      @apply bg-gray-600 text-white-800;
-    }
+.card {
+  &:before {
+    @apply bg-accent w-8 h-8 absolute -top-4 -right-4 rounded-3xl scale-100 origin-center duration-300 transition-all ease-out -z-[1];
+    content: "";
+  }
+  &:hover:before {
+    transform: scale(30);
   }
 }

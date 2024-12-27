@@ -37,7 +37,7 @@ form{
   input[type="submit"]:active,
   input[type="submit"]:hover,
   input[type="submit"]:focus {
-    @apply shadow-lg;
+    @apply shadow-input;
   }
 
   input[type="text"]:focus,
@@ -57,7 +57,7 @@ form{
   input[type="color"]:focus,
   textarea:focus {
     outline: none;
-    @apply shadow-lg;
+    @apply shadow-input;
   }
 }
 

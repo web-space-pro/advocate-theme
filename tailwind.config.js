@@ -8,7 +8,13 @@ module.exports = {
       'header.php',
       '404.php',
       'footer.php',
-      'page.php'
+      'page.php',
+      'partails/tpl-abautus.php',
+      'partails/tpl-callback.php',
+      'partails/tpl-map.php',
+      'partails/tpl-ourteam.php',
+      'partails/tpl-services.php',
+      'partails/tpl-welcome.php',
     ],
   },
   darkMode: false,
@@ -62,6 +68,7 @@ module.exports = {
       },
       boxShadow: {
         'icon': '0 0 5px #cca670',
+        'input': '0 0 10px #cca670',
       },
       backgroundImage: {
         'bg-gradient': "linear-gradient(180deg, #1a1f1b 0%, #001202 100%);",
