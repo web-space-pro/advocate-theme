@@ -79,3 +79,16 @@ a {
     transform: scale(30);
   }
 }
+
+.site{
+  ul,ol{
+    list-style: initial;
+    margin-left: 1rem;
+  }
+}
+
+.post-thumbnail{
+  img{
+    @apply object-cover object-center w-full h-full;
+  }
+}

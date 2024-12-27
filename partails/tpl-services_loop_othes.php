@@ -2,26 +2,37 @@
 if ( function_exists('get_field') ) {
     $title  = get_sub_field('title');
     $label  = get_sub_field('label');
-    $services  = get_sub_field('services');
-    $counter = 1;
-    $tabsList = [];
 }
-
-
 ?>
-<?php foreach( $services as $item ): ?>
-    <?php foreach( $item["service"] as $it_post ): ?>
-        <?php
-        $post_id =$it_post->ID;
-        $term_obj_list = get_the_terms($post_id, 'typeservices' );
-        $name_category = $term_obj_list[0]->name;
-        if (!in_array($name_category, $tabsList)) {
-            $tabsList[] = $name_category;
-        }
-        ?>
 
-    <?php endforeach; ?>
-<?php endforeach; ?>
+
+<?php
+    // термины текущей записи из таксономии "typeservices"
+    $terms = get_the_terms(get_the_ID(), 'typeservices');
+
+    if (!empty($terms) && !is_wp_error($terms)) {
+
+    $current_term = $terms[0];
+    $term_name = $current_term->name;
+    $term_id = $current_term->term_id;
+
+    // Получаем записи из той же таксономии
+    $args = array(
+        'post_type' => 'services',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'typeservices',
+                'field' => 'term_id',
+                'terms' => $term_id,
+            ),
+        ),
+        'post__not_in' => array(get_the_ID()),
+        'posts_per_page' => -1,
+    );
+
+    $related_services = new WP_Query($args);
+}
+?>
 <section class="mt-4">
     <div class="bg-bg-gradient relative overflow-hidden rounded-2xl mx-4 md:mx-10 py-8 xl:py-16">
         <div class="container relative">
@@ -36,66 +47,46 @@ if ( function_exists('get_field') ) {
 
             <div>
                 <?php if(!empty($label)) : ?>
-                    <span class="sm:text-sm sm:px-5 sm:py-3 inline-block uppercase border border-gray-500 rounded-md px-2.5 py-1.5 mb-4 font-normal text-[10px] text-gray-500">
-                       <?=$label?>
-                    </span>
+                    <span class="sm:text-sm sm:px-5 sm:py-3 inline-block uppercase border border-gray-500 rounded-md px-2.5 py-1.5 mb-4 font-normal text-[10px] text-gray-500"><?=$label?></span>
                 <?php endif; ?>
-                <h2 class="md:text-4xl xl:text-[2.5rem] text-2xl  font-semibold leading-tight  text-accent *:text-white-800 *:block">
-                    <?=$title?>
-                </h2>
+                <h2 class="md:text-4xl xl:text-[2.5rem] text-2xl  font-semibold leading-tight text-white-800"><?=$title ?></h2>
+                <?php if(!empty($term_name)): ?>
+                <h3 class="md:text-4xl xl:text-[2.5rem] mt-2 text-2xl  font-semibold leading-tight text-accent">«<?=esc_html($term_name)?>»</h3>
+                <?php endif;?>
             </div>
 
-
-            <?php if(!empty($services)) : ?>
             <div class="relative mt-10">
-                <div class="text-center">
-                    <div role="tablist" aria-label="tabs" class="sm:flex-wrap sm:items-start md:gap-x-4 gap-x-2 tabList relative flex  justify-start overflow-hidden">
-                        <?php foreach( $tabsList as $key=>$tab ): ?>
-                            <button role="tab" aria-selected="true" aria-controls="panel-<?=$key?>" tabindex="<?=$key?>" title="tab item" class="md:mb-4 mb-2 tab relative block rounded-full <?=($key==0)? ' active' :''?>">
-                                <span class="sm:inline-block sm:h-auto lg:text-sm xl:px-10 xl:py-4 px-5 py-2.5 text-xs h-full flex items-center uppercase border border-gray-300 bg-black-600 rounded-md font-semibold text-gray-400 hover:bg-gray-600 hover:text-white-800 transition-all duration-500">
-                                    <?=$tab?>
-                                </span>
-                            </button>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-                <div class="mt-4 relative w-full box-panel">
-                    <?php foreach( $services as $key=> $item ): ?>
-                    <div class="panel xs:gap-x-4 xs:grid-cols-3 md:gap-x-6 grid grid-cols-1  absolute top-0  w-full justify-center transition duration-500 <?=($key==0)? 'visible opacity-100 scale-100' :'invisible opacity-0 scale-90'?>" id="panel-<?=$key?>">
-                        <?php foreach( $item["service"] as $keypost => $item_post ): ?>
-                            <?php
-                            $post_id =$item_post->ID;
-                            $post_title =$item_post->post_title;
-                            $post_link = esc_url( get_permalink($post_id) );
-                            $term_obj_list = get_the_terms($post_id, 'typeservices' );
-                            $name_category = $term_obj_list[0]->name;
-                            foreach ($tabsList as $key => $tab):
-                                if ($tab == $name_category):
 
-                            ?>
+                <div class="panel xs:gap-x-4 xs:grid-cols-3 md:gap-x-6 grid grid-cols-1 w-full justify-center transition duration-500">
+                   <?php
+                   // Если есть записи
+                   if ($related_services->have_posts()) :
+                       while ($related_services->have_posts()) :
+                           $related_services->the_post();
+                       ?>
+                           <div class="sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group relative overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold text-white-800 transition-all duration-500">
+                               <a href="<?=get_permalink()?>" target="_self" class="sm:pr-0 pr-6 inline-block"><?=get_the_title()?></a>
+                               <div class="absolute opacity-0 bottom-3 right-6 group-hover:right-3 group-hover:opacity-100 transition-all duration-500">
+                                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                       <path d="M12.8333 5.5L19.5 12M19.5 12L12.8333 18.5M19.5 12L3.5 12" stroke="#CCA670" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                   </svg>
+                               </div>
+                               <div class="absolute w-24 h-24 -bottom-20 -left-20 bg-accent blur-[5rem] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                               <div class="absolute w-10 h-10 -top-8 -right-8 bg-accent blur-[7.5rem] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                           </div>
+                    <?php
+                       endwhile;
+                    else:
+                       echo '<p>Других услуг в этой категории пока нет.</p>';
+                   endif;
 
-                                    <div class="<?=($keypost == 2) ? 'row-span-3 ':''?>sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold  text-white-800 transition-all duration-500 relative">
-                                        <a href="<?=$post_link?>" class="sm:pr-0 pr-6" target="_self"><?=$post_title?></a>
-                                        <div class="absolute opacity-0 bottom-3 right-6 group-hover:right-3 group-hover:opacity-100 transition-all duration-500">
-                                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
-                                                <path d="M12.8333 5.5L19.5 12M19.5 12L12.8333 18.5M19.5 12L3.5 12" stroke="#CCA670" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
-                                        <div class="absolute w-24 h-24 -bottom-20 -left-20 bg-accent blur-[5rem] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                                        <div class="absolute w-10 h-10 -top-8 -right-8 bg-accent blur-[7.5rem] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                                    </div>
+                   // Сброс глобального запроса
+                   wp_reset_postdata();
 
-                            <?php
-                           endif; endforeach;
-
-                            ?>
-
-                        <?php endforeach; ?>
-                    </div>
-                    <?php endforeach; ?>
+                   ?>
                 </div>
             </div>
-            <?php endif; ?>
         </div>
     </div>
 </section>
+

@@ -51,9 +51,11 @@ header{
   transform: translateX(-70%);
   transition: all 600ms cubic-bezier(.62,.04,.3,1.56);
   transition-delay: 100ms;
+  z-index: -1;
   &.show{
     transform: translateX(0);
     opacity: 1;
+    z-index: 20;
   }
 
   .menu {

@@ -11,32 +11,38 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="container">
-        <header class="entry-header text-2xl font-semibold mb-20">
-            <?php
-            if ( is_singular() ) :
-                the_title( '<h1 class="entry-title">', '</h1>' );
-            else :
-                the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-            endif;
-
-            if ( 'post' === get_post_type() ) :
-                ?>
-                <div class="entry-meta">
-                    <?php
-                    advocate_theme_posted_on();
-                    advocate_theme_posted_by();
-                    ?>
-                </div><!-- .entry-meta -->
-            <?php endif; ?>
-        </header>
-        <?php advocate_theme_post_thumbnail(); ?>
-
+        <div class="flex flex-wrap -mx-4">
+            <div class="md:w-7/12 w-full px-4 ">
+                <div class="sm:mb-8 mb-4 w-[95%]">
+                    <h1 class="md:text-5xl xl:text-[3.5rem] text-3xl text-white-800 font-semibold leading-none">
+                        <?= the_title() ?>
+                    </h1>
+                </div>
+                <?php if(!empty($description)) : ?>
+                    <div class="md:text-base text-sm font-normal text-gray-400 w-5/6 mb-8">
+                        <?=$description;?>
+                    </div>
+                <?php endif; ?>
+                <?php if( isset($link) && !empty($link['url'])): ?>
+                    <div class="sm:text-left text-center">
+                        <a class="btn btn-primary" href="<?=$link['url'];?> target="<?=$link['target'];?>><?=$link['title'];?></a>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="md:w-5/12 w-full px-4">
+                <figure class="w-full max-h-[25rem] bg-black-400 rounded-2xl overflow-hidden">
+                    <?php advocate_theme_post_thumbnail(); ?>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-10">
         <div class="entry-content">
             <?php
             the_content(
                 sprintf(
                     wp_kses(
-                        /* translators: %s: Name of current post. Only visible to screen readers */
+                    /* translators: %s: Name of current post. Only visible to screen readers */
                         __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'advocate-theme' ),
                         array(
                             'span' => array(

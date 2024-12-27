@@ -532,9 +532,6 @@ video {
 .z-10{
   z-index: 10;
 }
-.z-20{
-  z-index: 20;
-}
 .z-50{
   z-index: 50;
 }
@@ -555,6 +552,10 @@ video {
 }
 .m-auto{
   margin: auto;
+}
+.-mx-4{
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 .mx-4{
   margin-left: 1rem;
@@ -663,6 +664,9 @@ video {
 .h-full{
   height: 100%;
 }
+.max-h-\[25rem\]{
+  max-height: 25rem;
+}
 .w-10{
   width: 2.5rem;
 }
@@ -677,6 +681,9 @@ video {
 }
 .w-44{
   width: 11rem;
+}
+.w-5\/6{
+  width: 83.333333%;
 }
 .w-52{
   width: 13rem;
@@ -698,6 +705,9 @@ video {
 }
 .w-80{
   width: 20rem;
+}
+.w-\[95\%\]{
+  width: 95%;
 }
 .w-full{
   width: 100%;
@@ -751,6 +761,10 @@ video {
 .gap-x-2{
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem;
+}
+.gap-x-3{
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem;
 }
 .gap-x-6{
   -moz-column-gap: 1.5rem;
@@ -851,6 +865,10 @@ video {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
 }
+.px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 .px-5{
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -889,6 +907,9 @@ video {
 .pb-16{
   padding-bottom: 4rem;
 }
+.pb-6{
+  padding-bottom: 1.5rem;
+}
 .pl-6{
   padding-left: 1.5rem;
 }
@@ -915,6 +936,9 @@ video {
 }
 .pt-7{
   padding-top: 1.75rem;
+}
+.pt-8{
+  padding-top: 2rem;
 }
 .text-center{
   text-align: center;
@@ -995,6 +1019,10 @@ video {
 .text-gray-500{
   --tw-text-opacity: 1;
   color: rgb(128 128 128 / var(--tw-text-opacity, 1));
+}
+.text-gray-600{
+  --tw-text-opacity: 1;
+  color: rgb(43 51 44 / var(--tw-text-opacity, 1));
 }
 .text-gray-700{
   --tw-text-opacity: 1;
@@ -1210,6 +1238,20 @@ a:hover{
   transform: scale(30);
 }
 
+.site ul, .site ol {
+  list-style: initial;
+  margin-left: 1rem;
+}
+
+.post-thumbnail img{
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
 header .menu li{
   position: relative;
   margin-right: 1.5rem;
@@ -1288,10 +1330,12 @@ header .menu .sub-menu li a{
   transform: translateX(-70%);
   transition: all 600ms cubic-bezier(0.62, 0.04, 0.3, 1.56);
   transition-delay: 100ms;
+  z-index: -1;
 }
 .menu-mobile.show {
   transform: translateX(0);
   opacity: 1;
+  z-index: 20;
 }
 .menu-mobile .menu li{
   margin-bottom: 1.5rem;
@@ -1695,6 +1739,10 @@ form .wpcf7-response-output{
   margin-bottom: 0.125rem;
 }
 
+.\*\:mb-5 > *{
+  margin-bottom: 1.25rem;
+}
+
 .\*\:ml-1 > *{
   margin-left: 0.25rem;
 }
@@ -1803,11 +1851,23 @@ form .wpcf7-response-output{
   .xs\:order-none{
     order: 0;
   }
+  .xs\:inline-block{
+    display: inline-block;
+  }
+  .xs\:w-4\/12{
+    width: 33.333333%;
+  }
   .xs\:w-5\/12{
     width: 41.666667%;
   }
+  .xs\:w-5\/6{
+    width: 83.333333%;
+  }
   .xs\:w-7\/12{
     width: 58.333333%;
+  }
+  .xs\:w-8\/12{
+    width: 66.666667%;
   }
   .xs\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1815,9 +1875,19 @@ form .wpcf7-response-output{
   .xs\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+  .xs\:gap-x-4{
+    -moz-column-gap: 1rem;
+         column-gap: 1rem;
+  }
   .xs\:py-0{
     padding-top: 0px;
     padding-bottom: 0px;
+  }
+  .xs\:pt-16{
+    padding-top: 4rem;
+  }
+  .xs\:text-left{
+    text-align: left;
   }
   .xs\:text-base{
     font-size: 1rem;
@@ -1961,6 +2031,9 @@ form .wpcf7-response-output{
   .md\:w-5\/12{
     width: 41.666667%;
   }
+  .md\:w-7\/12{
+    width: 58.333333%;
+  }
   .md\:w-8\/12{
     width: 66.666667%;
   }
@@ -2022,6 +2095,9 @@ form .wpcf7-response-output{
   .md\:text-xs{
     font-size: 0.75rem;
     line-height: 1rem;
+  }
+  .md\:\*\:mb-10 > *{
+    margin-bottom: 2.5rem;
   }
 }
 
