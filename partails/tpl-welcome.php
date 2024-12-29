@@ -51,12 +51,10 @@ if ( function_exists('get_field') ) {
                 <div class="tm"></div>
             </div>
             <?php endif; ?>
-
-<!--            <div class="absolute -top-56 left-0 right-0 w-full h-full bg-cover bg-repeat-x" style="background: url('/wp-content/uploads/2024/12/smoke-2.png');animation: slideTwo 70s linear infinite; ">-->
             </div>
-<!--            <div class="absolute bottom-0 left-0 right-0 w-full h-full bg-cover bg-repeat-x bg-transparent" style="background: url('/wp-content/uploads/2024/12/grey-smoke-png-transparent-image-1.png');animation: slide 50s linear infinite; "></div>-->
 
         </div>
     </div>
-    <canvas id="fogCanvas"></canvas>
 </section>
+<canvas id="fogCanvas"></canvas>
+

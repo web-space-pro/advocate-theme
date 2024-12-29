@@ -784,6 +784,9 @@ video {
 .overflow-hidden{
   overflow: hidden;
 }
+.overflow-x-hidden{
+  overflow-x: hidden;
+}
 .rounded-2xl{
   border-radius: 1rem;
 }
@@ -1290,13 +1293,14 @@ a:hover{
     background-position: -100% 0%;
   }
 }
-.welcome canvas {
+canvas {
   position: absolute;
-  top: -165px;
-  opacity: 0.8;
+  top: 30vh;
+  left: 0;
+  right: 0;
+  opacity: 1;
   z-index: 5;
-  width: 100% !important;
-  height: 113vh !important;
+  width: 100%;
 }
 
 header .menu li{

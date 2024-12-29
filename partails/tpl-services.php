@@ -2,26 +2,22 @@
 if ( function_exists('get_field') ) {
     $title  = get_sub_field('title');
     $label  = get_sub_field('label');
-    $services  = get_sub_field('services');
-    $counter = 1;
-    $tabsList = [];
 }
 
-
 ?>
-<?php foreach( $services as $item ): ?>
-    <?php foreach( $item["service"] as $it_post ): ?>
-        <?php
-        $post_id =$it_post->ID;
-        $term_obj_list = get_the_terms($post_id, 'typeservices' );
-        $name_category = $term_obj_list[0]->name;
-        if (!in_array($name_category, $tabsList)) {
-            $tabsList[] = $name_category;
-        }
-        ?>
 
-    <?php endforeach; ?>
-<?php endforeach; ?>
+
+<?php
+// Получаем все термины из таксономии "typeservices"
+$terms = get_terms([
+    'taxonomy' => 'typeservices',
+    'hide_empty' => true,
+    'orderby' => 'date',
+    'order' => 'DESC',
+]);
+?>
+
+
 <section class="mt-4">
     <div class="bg-bg-gradient relative overflow-hidden rounded-2xl mx-4 md:mx-10 py-8 xl:py-16">
         <div class="container relative">
@@ -46,55 +42,76 @@ if ( function_exists('get_field') ) {
             </div>
 
 
-            <?php if(!empty($services)) : ?>
-            <div class="relative mt-10">
-                <div class="text-center">
-                    <div role="tablist" aria-label="tabs" class="sm:flex-wrap sm:items-start md:gap-x-4 gap-x-2 tabList relative flex  justify-start overflow-hidden">
-                        <?php foreach( $tabsList as $key=>$tab ): ?>
-                            <button role="tab" aria-selected="true" aria-controls="panel-<?=$key?>" tabindex="<?=$key?>" title="tab item" class="md:mb-4 mb-2 tab relative block rounded-full <?=($key==0)? ' active' :''?>">
+            <?php if(!empty($terms)) : ?>
+                <div class="relative mt-10">
+                    <div class="text-center">
+                        <div role="tablist" aria-label="tabs" class="sm:flex-wrap sm:items-start md:gap-x-4 gap-x-2 tabList relative flex  justify-start overflow-hidden">
+                            <?php
+                            if (!empty($terms) && !is_wp_error($terms)):
+                                foreach ($terms as $key=>$term):
+                            ?>
+                                <button role="tab" aria-selected="true" aria-controls="panel-<?=$key?>" tabindex="<?=$key?>" title="tab item" class="md:mb-4 mb-2 tab relative block rounded-full <?=($key==0)? ' active' :''?>">
                                 <span class="sm:inline-block sm:h-auto lg:text-sm xl:px-10 xl:py-4 px-5 py-2.5 text-xs h-full flex items-center uppercase border border-gray-300 bg-black-600 rounded-md font-semibold text-gray-400 hover:bg-gray-600 hover:text-white-800 transition-all duration-500">
-                                    <?=$tab?>
+                                    <?=esc_html($term->name);?>
                                 </span>
-                            </button>
-                        <?php endforeach; ?>
+                                </button>
+                            <?php endforeach; endif;  ?>
+                        </div>
                     </div>
-                </div>
-                <div class="mt-4 relative w-full box-panel">
-                    <?php foreach( $services as $key=> $item ): ?>
-                    <div class="panel xs:gap-x-4 xs:grid-cols-3 md:gap-x-6 grid grid-cols-1  absolute top-0  w-full justify-center transition duration-500 <?=($key==0)? 'visible opacity-100 scale-100' :'invisible opacity-0 scale-90'?>" id="panel-<?=$key?>">
-                        <?php foreach( $item["service"] as $keypost => $item_post ): ?>
-                            <?php
-                            $post_id =$item_post->ID;
-                            $post_title =$item_post->post_title;
-                            $post_link = esc_url( get_permalink($post_id) );
-                            $term_obj_list = get_the_terms($post_id, 'typeservices' );
-                            $name_category = $term_obj_list[0]->name;
-                            foreach ($tabsList as $key => $tab):
-                                if ($tab == $name_category):
+                    <div class="mt-4 relative w-full box-panel">
+                        <?php
+                        if (!empty($terms) && !is_wp_error($terms)):
+                            foreach ($terms as $key=>$term):
+                                ?>
+                        <div class="panel xs:gap-x-4 xs:grid-cols-3 md:gap-x-6 grid grid-cols-1  absolute top-0  w-full justify-center transition duration-500 <?=($key==0)? 'visible opacity-100 scale-100' :'invisible opacity-0 scale-90'?>" id="panel-<?=$key?>">
+                        <?php
+                                // Получаем посты из текущего термина
+                                $query = new WP_Query([
+                                    'post_type' => 'services',
+                                    'tax_query' => [
+                                        [
+                                            'taxonomy' => 'typeservices',
+                                            'field' => 'term_id',
+                                            'terms' => $term->term_id,
+                                        ],
+                                    ],
+                                    'posts_per_page' => -1, // Получить все посты
+                                    'orderby' => 'date', // Сортировка по дате
+                                    'order' => 'DESC', // По убыванию (от новых к старым)
+                                ]);
 
-                            ?>
-
-                                    <div class="<?=($keypost == 2) ? 'row-span-3 ':''?>sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold  text-white-800 transition-all duration-500 relative">
-                                        <a href="<?=$post_link?>" class="sm:pr-0 pr-6" target="_self"><?=$post_title?></a>
-                                        <div class="absolute opacity-0 bottom-3 right-6 group-hover:right-3 group-hover:opacity-100 transition-all duration-500">
-                                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
-                                                <path d="M12.8333 5.5L19.5 12M19.5 12L12.8333 18.5M19.5 12L3.5 12" stroke="#CCA670" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
+                                if ($query->have_posts()) {
+                                     $keypost = 0;
+                                    while ($query->have_posts()) {
+                                        $query->the_post();
+                                        $keypost++;
+                                        // Выводим заголовок поста с ссылкой
+                                        ?>
+                                        <div class="<?=($keypost == 3) ? 'row-span-3 ':''?>sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold  text-white-800 transition-all duration-500 relative">
+                                            <a href="<?=get_permalink()?>" class="sm:pr-0 pr-6" target="_self"><?=get_the_title()?></a>
+                                            <div class="absolute opacity-0 bottom-3 right-6 group-hover:right-3 group-hover:opacity-100 transition-all duration-500">
+                                                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M12.8333 5.5L19.5 12M19.5 12L12.8333 18.5M19.5 12L3.5 12" stroke="#CCA670" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div class="absolute w-24 h-24 -bottom-20 -left-20 bg-accent blur-[5rem] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                                            <div class="absolute w-10 h-10 -top-8 -right-8 bg-accent blur-[7.5rem] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                                         </div>
-                                        <div class="absolute w-24 h-24 -bottom-20 -left-20 bg-accent blur-[5rem] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                                        <div class="absolute w-10 h-10 -top-8 -right-8 bg-accent blur-[7.5rem] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                                    </div>
+                                  <?php  }
+                                } else {
+                                    echo '<p>Нет постов в этой категории.</p>';
+                                }
 
+                                // Сбрасываем глобальную переменную $post
+                                wp_reset_postdata();
+                                ?>
+                            </div>
                             <?php
-                           endif; endforeach;
-
-                            ?>
-
-                        <?php endforeach; ?>
+                            endforeach;
+                        endif;
+                        ?>
                     </div>
-                    <?php endforeach; ?>
                 </div>
-            </div>
             <?php endif; ?>
         </div>
     </div>
