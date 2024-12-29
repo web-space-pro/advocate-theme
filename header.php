@@ -20,6 +20,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 
 	<?php wp_head(); ?>
 
@@ -149,6 +151,6 @@
         </div>
     </div>
 
-    <main id="page" class="site flex flex-col overflow-x-hidden text-white-800">
+    <main id="page" class="site flex flex-col text-white-800">
 
 

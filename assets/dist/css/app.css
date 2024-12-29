@@ -508,11 +508,20 @@ video {
 .-top-4{
   top: -1rem;
 }
+.-top-56{
+  top: -14rem;
+}
 .-top-8{
   top: -2rem;
 }
+.bottom-0{
+  bottom: 0px;
+}
 .bottom-3{
   bottom: 0.75rem;
+}
+.left-0{
+  left: 0px;
 }
 .right-0{
   right: 0px;
@@ -762,10 +771,6 @@ video {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem;
 }
-.gap-x-3{
-  -moz-column-gap: 0.75rem;
-       column-gap: 0.75rem;
-}
 .gap-x-6{
   -moz-column-gap: 1.5rem;
        column-gap: 1.5rem;
@@ -778,9 +783,6 @@ video {
 }
 .overflow-hidden{
   overflow: hidden;
-}
-.overflow-x-hidden{
-  overflow-x: hidden;
 }
 .rounded-2xl{
   border-radius: 1rem;
@@ -839,12 +841,21 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(217 217 217 / var(--tw-bg-opacity, 1));
 }
+.bg-transparent{
+  background-color: transparent;
+}
 .bg-white-800{
   --tw-bg-opacity: 1;
   background-color: rgb(243 243 243 / var(--tw-bg-opacity, 1));
 }
 .bg-bg-gradient{
   background-image: linear-gradient(180deg, #1a1f1b 0%, #001202 100%);;
+}
+.bg-cover{
+  background-size: cover;
+}
+.bg-repeat-x{
+  background-repeat: repeat-x;
 }
 .object-contain{
   -o-object-fit: contain;
@@ -1049,12 +1060,19 @@ video {
 .opacity-100{
   opacity: 1;
 }
+.blur{
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
 .blur-\[5rem\]{
   --tw-blur: blur(5rem);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .blur-\[7\.5rem\]{
   --tw-blur: blur(7.5rem);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.filter{
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .transition{
@@ -1250,6 +1268,35 @@ a:hover{
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+}
+
+#map {
+  -webkit-filter: grayscale(70%);
+}
+
+@keyframes slide {
+  0% {
+    background-position: -100% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+@keyframes slideTwo {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: -100% 0%;
+  }
+}
+.welcome canvas {
+  position: absolute;
+  top: -165px;
+  opacity: 0.8;
+  z-index: 5;
+  width: 100% !important;
+  height: 113vh !important;
 }
 
 header .menu li{

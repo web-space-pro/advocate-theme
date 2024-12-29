@@ -22,7 +22,7 @@ if ( function_exists('get_field') ) {
                     <?php endif; ?>
                     <?php if( isset($link) && !empty($link['url'])): ?>
                         <div class="xs:inline-block xs:text-left text-center hidden">
-                            <a class="btn btn-primary" href="<?=$link['url'];?> target="<?=$link['target'];?>><?=$link['title'];?></a>
+                            <a class="btn btn-primary" href="<?=$link['url'];?>" target="<?=$link['target'];?>" ><?=$link['title'];?></a>
                         </div>
                     <?php endif; ?>
                 </div>

@@ -92,3 +92,34 @@ a {
     @apply object-cover object-center w-full h-full;
   }
 }
+
+#map{
+  -webkit-filter: grayscale(70%);
+}
+
+@keyframes slide {
+  0% {
+    background-position: -100% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+@keyframes slideTwo {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: -100% 0%;
+  }
+}
+
+.welcome canvas{
+  position: absolute;
+  top: -165px;
+  opacity: 0.8;
+  z-index: 5;
+  width: 100% !important;
+  height: 113vh !important;
+}
