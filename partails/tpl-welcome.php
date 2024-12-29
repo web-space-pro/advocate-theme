@@ -10,10 +10,10 @@ if ( function_exists('get_field') ) {
 ?>
 
 <section class="welcome relative mt-4">
-    <div class="md:mx-10 xl:py-6 mx-4 py-3 bg-black-400 rounded-2xl">
-        <div class="container">
+    <div class="md:mx-10 xl:py-6 mx-4 py-3 bg-black-400 rounded-2xl overflow-hidden relative">
+        <div class="container xs:pb-0 pb-60">
             <div class="flex">
-                <div class="md:w-4/6 xl:py-20 md:py-10 w-full py-6  relative z-10">
+                <div class="xs:w-4/6 xl:py-20 md:py-10 w-full py-6  relative z-20">
                     <?php if(!empty($label)) : ?>
                     <span class="sm:text-sm sm:px-5 sm:py-3 inline-block uppercase border border-gray-500 rounded-md px-2.5 py-1.5 mb-4 font-normal text-[10px] text-gray-500"><?=$label;?></span>
                     <?php endif; ?>
@@ -33,22 +33,11 @@ if ( function_exists('get_field') ) {
                 </div>
             </div>
             <?php if( isset($photo) && !empty($photo)): ?>
-            <div class="sm:right-5 md:right-10 xl:right-16 z-10 absolute -right-16 -top-2 -bottom-6">
+            <div class="md:top-2 md:right-10 md:-bottom-6 xl:right-16 z-10 absolute right-5 top-[59%] bottom-0">
                 <figure class="w-full h-full">
                     <img class="w-full h-full object-cover" src="<?=$photo['url']?>" alt="<?= get_bloginfo(); ?>" width="<?=$photo['width']?>" height="<?=$photo['height']?>">
                 </figure>
-                <style>
-                    .tm{
-                        border-radius: 100%;
-                        background: #bf9e77;
-                        filter: blur(400px);
-                        width: 300px;
-                        height: 300px;
-                        position: absolute;
-                        top: 0;
-                    }
-                </style>
-                <div class="tm"></div>
+                <div class="rounded-full bg-accent w-72 h-[60%] absolute top-20 right-20 blur-[400px]"></div>
             </div>
             <?php endif; ?>
             </div>
@@ -56,5 +45,6 @@ if ( function_exists('get_field') ) {
         </div>
     </div>
 </section>
-<canvas id="fogCanvas"></canvas>
+<canvas id="fogCanvas" class="hidden md:block opacity-1 absolute top-[30vh] right-0 left-0 z-[5] w-full"></canvas>
+<canvas id="fogCanvasMobile" class="block md:hidden opacity-1 absolute top-[550px] right-0 left-0 z-[5] w-full !h-[300px]"></canvas>
 

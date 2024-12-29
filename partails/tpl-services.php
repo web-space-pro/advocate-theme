@@ -18,7 +18,7 @@ $terms = get_terms([
 ?>
 
 
-<section class="mt-4">
+<section id="services" class="mt-4">
     <div class="bg-bg-gradient relative overflow-hidden rounded-2xl mx-4 md:mx-10 py-8 xl:py-16">
         <div class="container relative">
             <div class="sm:right-6 xl:-top-9 absolute -top-4 right-1">

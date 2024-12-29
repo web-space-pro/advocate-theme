@@ -38,7 +38,7 @@
 <body <?php body_class('antialiased font-sans leading-normal bg-black-800'); ?>>
 <?php wp_body_open(); ?>
 
-    <header class="mt-4 sticky w-full top-0 font-normal z-50">
+    <header class="mt-4 sticky w-full top-2 font-normal z-50">
        <div class="bg-black-400 rounded-2xl mx-4 md:mx-10 py-3 xl:py-6">
            <div class="relative">
                <div class="container">

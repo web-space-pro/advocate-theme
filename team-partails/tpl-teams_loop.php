@@ -17,7 +17,7 @@ $args = array(
 $loop_team = new WP_Query($args);
 ?>
 
-<section class="mt-4 bg-white-800 pt-10 pb-16">
+<section id="other_team" class="mt-4 bg-white-800 pt-10 pb-16">
     <div class="mx-4 md:mx-10">
         <div class="container relative">
             <div>

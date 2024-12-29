@@ -54,12 +54,12 @@
                 )
             );
 
-            wp_link_pages(
-                array(
-                    'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'advocate-theme' ),
-                    'after'  => '</div>',
-                )
-            );
+//            wp_link_pages(
+//                array(
+//                    'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'advocate-theme' ),
+//                    'after'  => '</div>',
+//                )
+//            );
             ?>
         </div>
 

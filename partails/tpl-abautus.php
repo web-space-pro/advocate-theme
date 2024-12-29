@@ -10,7 +10,7 @@ if ( function_exists('get_field') ) {
 }
 ?>
 
-<section class="mt-10">
+<section class="mt-10" id="abautus">
     <div class="bg-black-400 relative rounded-2xl mx-4 md:mx-10 py-8 xl:py-16">
         <div class="container">
             <div class="flex flex-wrap">
