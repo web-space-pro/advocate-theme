@@ -4,7 +4,7 @@ try {
    // require("./vendors");
    require("./modules/menu");
    require("./modules/fog");
-  //  require("./modules/input_mask");
+ //  require("./modules/input_mask");
    require("./modules/generall");
    require("./modules/tabs");
   // require("./modules/swiper");

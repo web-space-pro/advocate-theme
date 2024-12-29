@@ -508,20 +508,11 @@ video {
 .-top-4{
   top: -1rem;
 }
-.-top-56{
-  top: -14rem;
-}
 .-top-8{
   top: -2rem;
 }
-.bottom-0{
-  bottom: 0px;
-}
 .bottom-3{
   bottom: 0.75rem;
-}
-.left-0{
-  left: 0px;
 }
 .right-0{
   right: 0px;
@@ -675,6 +666,15 @@ video {
 }
 .max-h-\[25rem\]{
   max-height: 25rem;
+}
+.min-h-\[240px\]{
+  min-height: 240px;
+}
+.min-h-screen{
+  min-height: 100vh;
+}
+.min-h-\[440px\]{
+  min-height: 440px;
 }
 .w-10{
   width: 2.5rem;
@@ -844,21 +844,12 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(217 217 217 / var(--tw-bg-opacity, 1));
 }
-.bg-transparent{
-  background-color: transparent;
-}
 .bg-white-800{
   --tw-bg-opacity: 1;
   background-color: rgb(243 243 243 / var(--tw-bg-opacity, 1));
 }
 .bg-bg-gradient{
   background-image: linear-gradient(180deg, #1a1f1b 0%, #001202 100%);;
-}
-.bg-cover{
-  background-size: cover;
-}
-.bg-repeat-x{
-  background-repeat: repeat-x;
 }
 .object-contain{
   -o-object-fit: contain;
@@ -996,11 +987,21 @@ video {
   font-size: 0.75rem;
   line-height: 1rem;
 }
+.text-8xl{
+  font-size: 6rem;
+  line-height: 1;
+}
 .font-normal{
   font-weight: 400;
 }
 .font-semibold{
   font-weight: 600;
+}
+.font-black{
+  font-weight: 900;
+}
+.font-extrabold{
+  font-weight: 800;
 }
 .uppercase{
   text-transform: uppercase;
@@ -1062,6 +1063,9 @@ video {
 }
 .opacity-100{
   opacity: 1;
+}
+.opacity-5{
+  opacity: 0.05;
 }
 .blur{
   --tw-blur: blur(8px);
@@ -1264,6 +1268,10 @@ a:hover{
   margin-left: 1rem;
 }
 
+.post-thumbnail{
+  height: 100%;
+  width: 100%;
+}
 .post-thumbnail img{
   height: 100%;
   width: 100%;
@@ -1277,22 +1285,6 @@ a:hover{
   -webkit-filter: grayscale(70%);
 }
 
-@keyframes slide {
-  0% {
-    background-position: -100% 0%;
-  }
-  100% {
-    background-position: 100% 0%;
-  }
-}
-@keyframes slideTwo {
-  0% {
-    background-position: 100% 0%;
-  }
-  100% {
-    background-position: -100% 0%;
-  }
-}
 canvas {
   position: absolute;
   top: 30vh;
@@ -1840,6 +1832,11 @@ form .wpcf7-response-output{
   line-height: 1rem;
 }
 
+.\*\:text-accent > *{
+  --tw-text-opacity: 1;
+  color: rgb(204 166 112 / var(--tw-text-opacity, 1));
+}
+
 .\*\:text-black-700 > *{
   --tw-text-opacity: 1;
   color: rgb(26 26 26 / var(--tw-text-opacity, 1));
@@ -2035,6 +2032,18 @@ form .wpcf7-response-output{
   .sm\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+  .sm\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
+  }
+  .sm\:text-9xl{
+    font-size: 8rem;
+    line-height: 1;
+  }
+  .sm\:text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 

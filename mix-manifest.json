@@ -1,4 +1,5 @@
 {
     "/assets/dist/js/app.js": "/assets/dist/js/app.js",
-    "/assets/dist/css/app.css": "/assets/dist/css/app.css"
+    "/assets/dist/css/app.css": "/assets/dist/css/app.css",
+    "/assets/dist/js/plugins/jquery.maskedinput.min.js": "/assets/dist/js/plugins/jquery.maskedinput.min.js"
 }

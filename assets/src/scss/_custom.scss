@@ -88,6 +88,7 @@ a {
 }
 
 .post-thumbnail{
+  @apply h-full w-full;
   img{
     @apply object-cover object-center w-full h-full;
   }
@@ -95,24 +96,6 @@ a {
 
 #map{
   -webkit-filter: grayscale(70%);
-}
-
-@keyframes slide {
-  0% {
-    background-position: -100% 0%;
-  }
-  100% {
-    background-position: 100% 0%;
-  }
-}
-
-@keyframes slideTwo {
-  0% {
-    background-position: 100% 0%;
-  }
-  100% {
-    background-position: -100% 0%;
-  }
 }
 
 canvas{
