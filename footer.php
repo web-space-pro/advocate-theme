@@ -33,7 +33,7 @@ if (function_exists('get_field')) {
 
 }
 ?>
-    <section class="mt-4">
+    <section id="contacts" class="mt-4">
         <div class="mx-4 md:py-10 md:mx-10 py-5">
         <div class="container">
             <div class="md:flex-row flex flex-col-reverse flex-wrap">
