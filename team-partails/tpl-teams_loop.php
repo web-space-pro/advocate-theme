@@ -34,7 +34,7 @@ $loop_team = new WP_Query($args);
             <?php if ($loop_team->have_posts()) : ?>
                  <div class="xs:grid-cols-2 sm:grid-cols-4 md:mt-10 mt-10 mb-4 grid grid-cols-1 gap-6">
            <?php while ($loop_team->have_posts()) : $loop_team->the_post(); ?>
-                    <figure class="card group lg:p-6 p-3 rounded-lg border border-gray-800 relative z-0 cursor-pointer overflow-hidden">
+                    <figure class="card group lg:p-6 md:p-3 p-8 rounded-lg border border-gray-800 relative z-0 cursor-pointer overflow-hidden">
                       <a href="<?=get_permalink()?>" target="_self">
                         <div class="sm:w-auto sm:h-56 xl:h-64 h-64  m-auto rounded-lg overflow-hidden bg-gray-800">
                             <?php advocate_theme_post_thumbnail(); ?>

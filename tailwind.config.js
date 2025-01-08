@@ -16,6 +16,7 @@ module.exports = {
       'partails/tpl-callback.php',
       'partails/tpl-map.php',
       'partails/tpl-teams_loop.php',
+      'partails/tpl-ourteam.php',
       'partails/tpl-services.php',
       'partails/tpl-welcome.php',
       'partails/tpl-welcome_services.php',

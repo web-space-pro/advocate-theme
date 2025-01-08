@@ -30,7 +30,7 @@ function custom_about_page_message() {
     $current_screen = get_current_screen();
     if ($current_screen && $current_screen->base === 'about') {
         echo '<div style="padding: 20px; background: #c5d9ed; border: 1px solid #006064; margin: 20px 0; border-radius: 5px;">
-            <h2>Спасибо за использование WordPress!</h2>
+            <h2>Спасибо за использование Нашей темы!</h2>
             <p>Надеемся, что вам понравится наш сайт. Если у вас есть вопросы, <a href="https://example.com" target="_blank">свяжитесь с нами</a>.</p>
             <a href="#" class="button-primary" style="margin-top: 10px;">Подробнее</a>
         </div>';
@@ -49,7 +49,7 @@ function custom_admin_color_scheme() {
         'custom_scheme', // Уникальное имя схемы
         'Моя Цветовая Схема', // Название
         $theme_dir, // Путь к CSS-файлу
-        array('#4CAF50', '#388E3C', '#2E7D32') // Основные цвета для превью
+        array('#25282b', '#363b3f', '#a3b745', '#e14d43')  // Основные цвета для превью
     );
 }
 add_action('admin_init', 'custom_admin_color_scheme');
@@ -71,6 +71,6 @@ function apply_custom_scheme_to_existing_users() {
         wp_update_user($user);
     }
 }
-//add_action('init', 'apply_custom_scheme_to_existing_users');
+add_action('init', 'apply_custom_scheme_to_existing_users');
 
 ?>

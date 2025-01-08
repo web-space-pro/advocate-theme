@@ -1,5 +1,5 @@
 (function ($, root, undefined) {
-    jQuery('a[href^="/#"]').on('click', function(e) {
+    $('a[href^="/#"]').on('click', function(e) {
         e.preventDefault();
 
         let href = $(this).attr('href');
@@ -13,6 +13,20 @@
             }, 'fast');
         } else {
             window.location.href = location + '/#' + target;
+        }
+    });
+
+    $('a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+
+        let href = $(this).attr('href');
+        let target = href.split('#')[1];
+        let headerH = $('header').innerHeight();
+
+        if ($('#' + target).length) {
+            $('html, body').animate({
+                scrollTop: $('#' + target).offset().top - headerH
+            }, 'fast');
         }
     });
 })(jQuery);

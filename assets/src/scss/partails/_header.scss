@@ -41,11 +41,6 @@ header{
   }
 }
 .menu-mobile{
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  height: 100%;
   width: 75%;
   opacity: 0;
   transform: translateX(-70%);
@@ -55,7 +50,7 @@ header{
   &.show{
     transform: translateX(0);
     opacity: 1;
-    z-index: 20;
+    z-index: 30;
   }
 
   .menu {

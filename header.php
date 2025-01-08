@@ -109,7 +109,7 @@
            </div>
        </div>
     </header>
-    <div class="menu-mobile bg-black-400">
+    <div class="menu-mobile bg-black-400 fixed top-0 left-0 bottom-0 h-full">
         <div class="h-full relative pl-6 pr-5 pt-24 pb-10 flex  justify-center flex-col">
             <nav class="text-2xl font-semibold">
                 <?php header_nav(); ?>
