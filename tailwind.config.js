@@ -10,6 +10,8 @@ module.exports = {
       'footer.php',
       'page.php',
       'page.php',
+      'single-services.php',
+      'single.php',
       'template-parts/content.php',
 
       'partails/tpl-abautus.php',

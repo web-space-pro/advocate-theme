@@ -97,3 +97,15 @@ a {
 #map {
   -webkit-filter: grayscale(70%);
 }
+h2.wp-block-heading{
+  @apply xs:text-3xl text-2xl font-bold mb-10;
+}
+h3.wp-block-heading{
+  @apply xs:text-2xl text-xl font-bold mb-8;
+}
+h4.wp-block-heading{
+  @apply xs:text-xl text-base font-bold mb-6;
+}
+.entry-content *{
+  @apply mb-4;
+}

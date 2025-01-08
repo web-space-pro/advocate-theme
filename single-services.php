@@ -11,11 +11,22 @@ get_header();
 ?>
 
 
-   <?php
+<?php
     while ( have_posts() ) :
-      the_post();
-
-      ?>
+    the_post();
+    if ( have_rows('components' )  ) :
+        while( have_rows('components') )
+        {
+            the_row();
+            $layout = get_row_layout();
+            $inclusion = get_stylesheet_directory() . DIRECTORY_SEPARATOR . "partails" . DIRECTORY_SEPARATOR ."tpl-{$layout}.php";
+            if( file_exists( $inclusion ) )
+            {
+                include( $inclusion );
+            }
+        }
+    else:
+        ?>
         <section class="mt-10">
             <div class="bg-black-400 relative rounded-2xl mx-4 md:mx-10 py-8 xl:py-16">
                 <div class="container">
@@ -27,20 +38,20 @@ get_header();
                     //                                                'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'advocate-theme' ) . '</span> <span class="nav-title">%title</span>',
                     //                                                'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'advocate-theme' ) . '</span> <span class="nav-title">%title</span>',
                     //                                            )
-                    //                     );
+                    //                                        );
 
                     // If comments are open or we have at least one comment, load up the comment template.
                     if ( comments_open() || get_comments_number() ) :
-                        //comments_template();
+                        comments_template();
                     endif;
                     ?>
                 </div>
             </div>
         </section>
     <?php
-
-    endwhile;
-   ?>
+    endif;
+endwhile;
+?>
 
 
 <?php
