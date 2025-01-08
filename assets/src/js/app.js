@@ -1,10 +1,10 @@
 try {
     window.jQuery = window.$ = require('jquery');
    // require("lazysizes/lazysizes.min");
-   // require("./vendors");
+   require("./vendors");
+   require("./modules/input_mask");
    require("./modules/menu");
    require("./modules/fog");
- //  require("./modules/input_mask");
    require("./modules/generall");
    require("./modules/tabs");
   // require("./modules/swiper");

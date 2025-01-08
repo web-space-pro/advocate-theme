@@ -2,7 +2,7 @@
 add_action('wp_enqueue_scripts', 'advocate_theme_scripts');
 add_action('wp_enqueue_scripts', 'advocate_theme_styles');
 
-add_filter('script_loader_tag', 'scripts_add_defer_or_async', 10, 2);
+//add_filter('script_loader_tag', 'scripts_add_defer_or_async', 10, 2);
 add_filter( 'style_loader_src',  'sdt_remove_ver_css_js', 9999, 2 );
 add_filter( 'script_loader_src', 'sdt_remove_ver_css_js', 9999, 2 );
 
@@ -14,7 +14,6 @@ function advocate_theme_scripts()
     wp_enqueue_script( 'api-yandex', 'https://api-maps.yandex.ru/2.1/?load=package.standard,package.geoObjects&lang=ru-RU', array(), $ver, true);
     wp_enqueue_script( 'map-yandex', get_template_directory_uri() . '/map/yos.js', array(), $ver, true);
 
-    wp_enqueue_script( 'input-mask', get_template_directory_uri() . '/assets/dist/js/plugins/jquery.maskedinput.min.js', array('JQuery'), $ver, true);
 	wp_enqueue_script( 'app', get_template_directory_uri() . '/assets/dist/js/app.js', array(), $ver, true);
 
 	wp_localize_script( 'app', 'app_vars', array(
