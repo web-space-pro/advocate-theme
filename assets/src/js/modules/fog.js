@@ -63,11 +63,12 @@ if(canvas !==null){
         initFog();
     });
 
-// Запуск
-    fogImage.onload = () => {
-        initFog();
-        animateFog();
-    };
+    if (window.innerWidth > 640) {
+        fogImage.onload = () => {
+            initFog();
+            animateFog();
+        };
+    }
 }
 
 
@@ -79,7 +80,7 @@ if(canvasMob !==null){
 
     const fogParticlesMob = [];
     const fogImageMob = new Image();
-    fogImageMob.src = '/wp-content/uploads/2024/12/smoke7-1.png'; // Замените на свою текстуру тумана
+    fogImageMob.src = '/wp-content/uploads/2025/01/smokemobile1.png'; // Замените на свою текстуру тумана
 
 // Создаем частицы тумана
     class FogParticleMob {
@@ -100,27 +101,27 @@ if(canvasMob !==null){
         update() {
             this.x -= this.speed;
             if (this.x + this.size < 0) {
-                this.x = canvas.width;
-                this.y = Math.random() * (canvas.height - this.size); // Ограничиваем y
+                this.x = canvasMob.width;
+                this.y = Math.random() * (canvasMob.height - this.size); // Ограничиваем y
             }
         }
     }
 
 // Инициализируем частицы
     function initFogMob() {
-        const fogCount = 17; // Количество частиц
+        const fogCount = 20; // Количество частиц
         for (let i = 0; i < fogCount; i++) {
-            const size = Math.random() * 300 + 128;
-            const x = Math.random() * canvas.width;
-            const y = Math.random() * (canvas.height - size); // Ограничиваем y при создании
-            const speed = Math.random() + 0.37;
+            const size = Math.random() * 200 + 128;
+            const x = Math.random() * canvasMob.width;
+            const y = Math.random() * (canvasMob.height - size); // Ограничиваем y при создании
+            const speed = Math.random() * 0.5 + 0.1;
             fogParticlesMob.push(new FogParticleMob(x, y, size, speed));
         }
     }
 
 // Анимация
     function animateFogMob() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvasMob.width, canvasMob.height);
         fogParticlesMob.forEach(particle => {
             particle.update();
             particle.draw();
@@ -130,13 +131,12 @@ if(canvasMob !==null){
 
 // Обновляем размеры холста при изменении окна
     window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvasMob.width = window.innerWidth;
+        canvasMob.height = window.innerHeight;
         fogParticlesMob.length = 0;
-        initFog();
+        initFogMob();
     });
 
-// Запуск
     fogImageMob.onload = () => {
         initFogMob();
         animateFogMob();

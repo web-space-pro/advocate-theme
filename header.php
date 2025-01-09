@@ -14,14 +14,11 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
 
 	<?php wp_head(); ?>
 
@@ -38,7 +35,7 @@
 <body <?php body_class('antialiased font-sans leading-normal bg-black-800'); ?>>
 <?php wp_body_open(); ?>
 
-    <header class="mt-4 sticky w-full md:top-0 top-2 font-normal z-50">
+    <header class="mt-4 sticky w-full top-2 font-normal z-50">
        <div class="bg-black-400 rounded-2xl mx-4 md:mx-10 py-3 xl:py-6">
            <div class="relative">
                <div class="container">
