@@ -48,7 +48,12 @@ if ( function_exists('get_field') ) {
 
         </div>
     </div>
-    <canvas id="fogCanvasMobile" class="block xs:h-0 xs:hidden opacity-1 absolute -bottom-24 right-0 left-0 z-[5] w-full h-[370px] pointer-events-none"></canvas>
+    <style>
+        canvas{
+            pointer-events: none!important;
+        }
+    </style>
+    <canvas id="fogCanvasMobile" class="block xs:h-0 xs:hidden opacity-1 absolute -bottom-24 right-0 left-0 z-[5] w-full h-[370px]"></canvas>
     <canvas id="fogCanvas" class="hidden xs:block xs:h-[340px] xl:h-[600px] lg:h-[400px] h-0 opacity-1 absolute -bottom-[17%] right-0 left-0 z-[5] w-full"></canvas>
 </section>
 
