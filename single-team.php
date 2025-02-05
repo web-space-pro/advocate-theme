@@ -14,7 +14,7 @@ get_header();
    <?php
     while ( have_posts() ) :
       the_post();
-      if ( have_rows('team' )  ) :
+      if (function_exists('have_rows') && have_rows('team' )  ) :
           while( have_rows('team') )
           {
               the_row();

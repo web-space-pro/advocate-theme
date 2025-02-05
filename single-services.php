@@ -14,7 +14,7 @@ get_header();
 <?php
     while ( have_posts() ) :
     the_post();
-    if ( have_rows('components' )  ) :
+    if (function_exists('have_rows') && have_rows('components' )  ) :
         while( have_rows('components') )
         {
             the_row();

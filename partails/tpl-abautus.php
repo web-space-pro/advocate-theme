@@ -23,8 +23,8 @@ if ( function_exists('get_field') ) {
                     <h2 class="md:text-4xl xl:text-[2.5rem] text-2xl  font-semibold leading-tight  text-accent *:text-white-800 *:block">
                         <?=$title?>
                     </h2>
-                    <div class="sm:mt-8 mt-6 text-base text-gray-400">
-                        <p><?=$text?></p>
+                    <div class="sm:mt-8 mt-6 text-base text-gray-400 *:mb-4">
+                        <?=$text?>
                     </div>
                     <?php if(!empty($experience)) : ?>
                     <div class="sm:mt-8 sm:grid-cols-3 lg:gap-6 mb-6 mt-6 grid grid-cols-1 gap-3">
@@ -40,7 +40,7 @@ if ( function_exists('get_field') ) {
 
                 <?php if(!empty($ceo_photo)) : ?>
                 <div class="lg:w-3/6 w-full">
-                    <div class="lg:absolute lg:-top-1 xl:-top-36  lg:right-0 lg:bottom-0 lg:h-auto  h-96 ">
+                    <div class="lg:absolute lg:right-0 lg:bottom-0 lg:h-auto  h-96 ">
                         <figure class="w-full h-full">
                             <img class="lg:object-cover w-full h-full object-contain" src="<?=$ceo_photo['url']?>" alt="<?= get_bloginfo(); ?>" width="<?=$ceo_photo['width']?>" height="<?=$ceo_photo['height']?>">
                         </figure>
