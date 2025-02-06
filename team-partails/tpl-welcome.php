@@ -39,7 +39,7 @@ if ( function_exists('get_field') ) {
                 </div>
                 <div class="xs:w-4/12 md:w-5/12 w-full px-4">
                     <figure class="w-full max-h-[25rem] bg-black-400 rounded-2xl overflow-hidden">
-                        <?php advocate_theme_post_thumbnail(); ?>
+                        <?php the_post_thumbnail(); ?>
                     </figure>
                 </div>
             </div>

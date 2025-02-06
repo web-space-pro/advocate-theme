@@ -1,11 +1,28 @@
 <?php
 if ( function_exists('get_field') ) {
-    $title  = get_sub_field('title');
-    $subtitle  = get_sub_field('subtitle');
-    $form  = get_sub_field('contact_form');
-    $phone = get_sub_field('phone');
-    $label  = get_sub_field('label');
 
+    $setting_show  = get_sub_field('setting_show');
+    $c_value  = get_field('cp_callback','options');
+
+    $title  = '';
+    $subtitle  = '';
+    $form  = '';
+    $phone = '';
+    $label  = '';
+
+    if(!$setting_show){
+        $title  = get_sub_field('title');
+        $subtitle  = get_sub_field('subtitle');
+        $form  = get_sub_field('contact_form');
+        $phone = get_sub_field('phone');
+        $label  = get_sub_field('label');
+    }else{
+        $title  = $c_value['title'];
+        $subtitle  = $c_value['subtitle'];
+        $form  = $c_value['contact_form'];
+        $phone = $c_value['phone'];
+        $label  = $c_value['label'];
+    }
 }
 ?>
 
@@ -22,7 +39,7 @@ if ( function_exists('get_field') ) {
             <div class="mt-8">
                 <div class="sm:w-5/6 w-full m-auto">
                     <?php if(!empty($form)) : ?>
-                      <?= do_shortcode('[contact-form-7 id="'.$form.'"]'); ?>
+                        <?= do_shortcode('[contact-form-7 id="'.$form.'"]'); ?>
                     <?php endif; ?>
                 </div>
             </div>

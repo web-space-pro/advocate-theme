@@ -36,7 +36,7 @@ $loop_team = new WP_Query($args);
                     <figure class="card group lg:p-6 md:p-3 p-8 rounded-lg border border-gray-800 relative z-0 cursor-pointer overflow-hidden">
                         <a href="<?=get_permalink()?>" target="_self">
                             <div class="sm:w-auto sm:h-56 xl:h-64 h-64  m-auto rounded-lg overflow-hidden bg-gray-800">
-                                <?php advocate_theme_post_thumbnail(); ?>
+                                <?php the_post_thumbnail(); ?>
                             </div>
                             <div class="pt-4">
                                 <figcaption>

@@ -98,14 +98,25 @@ a {
   -webkit-filter: grayscale(70%);
 }
 h2.wp-block-heading{
-  @apply xs:text-3xl text-2xl font-bold mb-10;
+  @apply xs:text-4xl text-2xl font-bold mb-10 leading-normal;
 }
 h3.wp-block-heading{
-  @apply xs:text-2xl text-xl font-bold mb-8;
+  @apply xs:text-3xl text-xl font-bold mb-8 leading-normal;
 }
 h4.wp-block-heading{
-  @apply xs:text-xl text-base font-bold mb-6;
+  @apply md:text-[20px] text-base font-normal mb-6 leading-normal;
 }
 .entry-content *{
   @apply mb-4;
+}
+blockquote.wp-block-quote{
+  @apply md:text-[20px] md:px-8 md:py-6 px-4 py-3 mb-6 text-base bg-accent leading-normal text-white-800  rounded;
+  p{
+    @apply md:text-[20px] text-base leading-normal;
+  }
+}
+.post-content {
+  p{
+    @apply text-base leading-normal;
+  }
 }

@@ -12,7 +12,7 @@ if ( function_exists('get_field') ) {
 // Получаем все термины из таксономии "typeservices"
 $terms = get_terms([
     'taxonomy' => 'typeservices',
-    'hide_empty' => true,
+    'hide_empty' => false,
     'orderby' => 'date',
     'order' => 'DESC',
 ]);
@@ -49,16 +49,18 @@ $terms = get_terms([
                             <?php
                             if (!empty($terms) && !is_wp_error($terms)):
                                 //перебор услуг фирмы
+                                $counter = 0;
                                 foreach ($terms as $key=>$term):
                                   //перебор услуг участника
                                   foreach ($services as $key_serv=>$service):
                                     if($service == $term->term_id):
-                            ?>          <button role="tab" aria-selected="true" aria-controls="panel-<?=$key?>" tabindex="<?=$key?>" title="tab item" class="md:mb-4 mb-2 tab relative block rounded-full <?=($key==0)? ' active' :''?>">
+                            ?>          <button role="tab" aria-selected="true" aria-controls="panel-<?=$counter?>" tabindex="<?=$counter?>" title="tab item" class="md:mb-4 mb-2 tab relative block rounded-full <?=($counter==0)? ' active' :''?>">
                                           <span class="sm:inline-block sm:h-auto lg:text-sm xl:px-10 xl:py-4 px-5 py-2.5 text-xs h-full flex items-center uppercase border border-gray-300 bg-black-600 rounded-md font-semibold text-gray-400 hover:bg-gray-600 hover:text-white-800 transition-all duration-500">
                                             <?=esc_html($term->name);?>
                                           </span>
                                         </button>
-                            <?php       endif;
+                            <?php   $counter++;
+                                    endif;
                                     endforeach;
                                 endforeach;
                             endif;  ?>
@@ -67,11 +69,12 @@ $terms = get_terms([
                     <div class="mt-4 relative w-full box-panel">
                         <?php
                         if (!empty($services) && !is_wp_error($services)):
+                            $counter = 0;
                             foreach ($terms as $key=>$term):
                                 foreach ($services as $service):
                                     if($service == $term->term_id):
                                 ?>
-                                  <div class="panel xs:gap-x-4 xs:grid-cols-3 md:gap-x-6 grid grid-cols-1  absolute top-0  w-full justify-center transition duration-500 <?=($key==0)? 'visible opacity-100 scale-100' :'invisible opacity-0 scale-90'?>" id="panel-<?=$key?>">
+                                  <div class="panel xs:gap-x-4 xs:grid-cols-3 md:gap-x-6 grid grid-cols-1  absolute top-0  w-full justify-center transition duration-500 <?=($counter==0)? 'visible opacity-100 scale-100' :'invisible opacity-0 scale-90'?>" id="panel-<?=$counter?>">
                         <?php
                                 // Получаем посты из текущего термина
                                 $query = new WP_Query([
@@ -89,13 +92,24 @@ $terms = get_terms([
                                 ]);
 
                                 if ($query->have_posts()) {
-                                     $keypost = 0;
+                                    $keyPost = 0;
+                                    $countPosts = $query->post_count;
                                     while ($query->have_posts()) {
                                         $query->the_post();
-                                        $keypost++;
+                                        $keyPost++;
+                                        $setClass = '';
+                                        if($keyPost == 3){
+                                            $setClass= 'row-span-2';
+                                        }elseif ($keyPost == 4 && $countPosts == 4) {
+                                            $setClass= 'col-span-2';
+                                        }elseif ($keyPost == 6 && $countPosts == 6){
+                                            $setClass= 'col-span-3';
+                                        }elseif ($keyPost == 7 && $countPosts == 7){
+                                            $setClass= 'col-span-2';
+                                        }
                                         // Выводим заголовок поста с ссылкой
                                         ?>
-                                        <div class="<?=($keypost == 3) ? 'row-span-3 ':''?>sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold  text-white-800 transition-all duration-500 relative">
+                                        <div class="<?=$setClass;?> sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold  text-white-800 transition-all duration-500 relative">
                                             <a href="<?=get_permalink()?>" class="sm:pr-0 pr-6" target="_self"><?=get_the_title()?></a>
                                             <div class="absolute opacity-0 bottom-3 right-6 group-hover:right-3 group-hover:opacity-100 transition-all duration-500">
                                                 <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
@@ -107,14 +121,14 @@ $terms = get_terms([
                                         </div>
                                   <?php  }
                                 } else {
-                                    echo '<p>Нет постов в этой категории.</p>';
+                                    echo '<p>Нет услуг в этой категории.</p>';
                                 }
 
                                 // Сбрасываем глобальную переменную $post
                                 wp_reset_postdata();
                                 ?>
                             </div>
-                            <?php endif;
+                            <?php $counter++; endif;
                                 endforeach;
                             endforeach;
                         endif;

@@ -48,7 +48,7 @@ module.exports = {
           'md': '992px',
           'lg': '1024px',
           'xl': '1140px',
-          '2xl': '1140px',
+          '2xl': '1140px'
         }
       },
       screens: {
@@ -58,6 +58,8 @@ module.exports = {
         'lg': '1024px',
         'xl': '1180px',
         '2xl': '1440px',
+        '3xl': '1600px',
+        '4xl': '1920px',
       },
       colors: {
         accent: '#cca670',

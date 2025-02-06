@@ -61,10 +61,23 @@ if ( function_exists('get_field') ) {
                    <?php
                    // Если есть записи
                    if ($related_services->have_posts()) :
+                       $countPosts = $related_services->post_count;
+                       $keyPost = 0;
                        while ($related_services->have_posts()) :
                            $related_services->the_post();
+                           $keyPost++;
+                           $setClass = '';
+                           if($keyPost == 3){
+                               $setClass= 'row-span-2';
+                           }elseif ($keyPost == 4 && $countPosts == 4) {
+                               $setClass= 'col-span-2';
+                           }elseif ($keyPost == 6 && $countPosts == 6){
+                               $setClass= 'col-span-3';
+                           }elseif ($keyPost == 7 && $countPosts == 7){
+                               $setClass= 'col-span-2';
+                           }
                        ?>
-                           <div class="sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group relative overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold text-white-800 transition-all duration-500">
+                           <div class="<?=$setClass;?> sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group relative overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold text-white-800 transition-all duration-500">
                                <a href="<?=get_permalink()?>" target="_self" class="sm:pr-0 pr-6 inline-block"><?=get_the_title()?></a>
                                <div class="absolute opacity-0 bottom-3 right-6 group-hover:right-3 group-hover:opacity-100 transition-all duration-500">
                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

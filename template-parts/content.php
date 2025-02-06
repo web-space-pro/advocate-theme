@@ -14,7 +14,7 @@
         <div class="flex flex-wrap -mx-4">
             <div class="md:w-7/12 w-full px-4 ">
                 <div class="sm:mb-8 mb-4 w-[95%]">
-                    <h1 class="md:text-5xl xl:text-[3.5rem] text-3xl text-white-800 font-semibold leading-none">
+                    <h1 class="md:text-5xl xl:text-[2.5rem] text-3xl text-white-800 font-semibold leading-none">
                         <?= the_title() ?>
                     </h1>
                 </div>

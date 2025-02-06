@@ -150,35 +150,35 @@ if (canvasMob !== null) {
         initFogMob();
         animateFogMob();
     };
-}
 
 
-const block = document.getElementById('fogCanvasMobile');
+    const block = document.getElementById('fogCanvasMobile');
 
 // Отключение взаимодействий через JavaScript
-block.addEventListener('scroll', (event) => {
-    event.stopPropagation();
-});
+    block.addEventListener('scroll', (event) => {
+        event.stopPropagation();
+    });
 
-block.addEventListener('touchstart', (event) => {
-    event.stopPropagation();
-    event.preventDefault();
-});
+    block.addEventListener('touchstart', (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+    });
 
-block.addEventListener('touchmove', (event) => {
-    event.stopPropagation();
-    event.preventDefault();
-});
+    block.addEventListener('touchmove', (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+    });
 
-block.addEventListener('mousedown', (event) => {
-    event.stopPropagation();
-    event.preventDefault();
-});
+    block.addEventListener('mousedown', (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+    });
 
-block.addEventListener('wheel', (event) => {
-    event.stopPropagation();
-    event.preventDefault();
-});
+    block.addEventListener('wheel', (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+    });
 
 // CSS для предотвращения кликов и других действий
-block.style.pointerEvents = 'none';
+    block.style.pointerEvents = 'none';
+}

@@ -11,7 +11,7 @@ if ( function_exists('get_field') ) {
             <div class="flex flex-wrap -mx-4">
                 <div class="xs:w-8/12 md:w-7/12 w-full px-4 ">
                     <div class="sm:mb-8 mb-4 w-[95%]">
-                        <h1 class="md:text-5xl xl:text-[3.5rem] text-3xl text-white-800 font-semibold leading-none">
+                        <h1 class="md:text-5xl xl:text-[2.5rem] text-3xl text-white-800 font-semibold leading-none">
                             <?= the_title() ?>
                         </h1>
                     </div>
@@ -28,7 +28,7 @@ if ( function_exists('get_field') ) {
                 </div>
                 <div class="xs:w-4/12 md:w-5/12 w-full px-4">
                     <figure class="w-full max-h-[25rem] bg-black-400 rounded-2xl overflow-hidden">
-                        <?php advocate_theme_post_thumbnail(); ?>
+                        <?php the_post_thumbnail(); ?>
                     </figure>
                 </div>
             </div>

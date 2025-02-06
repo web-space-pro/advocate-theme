@@ -75,19 +75,29 @@ $terms = get_terms([
                                             'terms' => $term->term_id,
                                         ],
                                     ],
-                                    'posts_per_page' => -1, // Получить все посты
-                                    'orderby' => 'date', // Сортировка по дате
-                                    'order' => 'DESC', // По убыванию (от новых к старым)
+                                    'posts_per_page' => -1,
+                                    'orderby' => 'date',
+                                    'order' => 'DESC',
                                 ]);
 
                                 if ($query->have_posts()) {
-                                     $keypost = 0;
+                                    $countPosts = $query->post_count;
+                                    $keyPost = 0;
                                     while ($query->have_posts()) {
                                         $query->the_post();
-                                        $keypost++;
-                                        // Выводим заголовок поста с ссылкой
+                                        $keyPost++;
+                                        $setClass = '';
+                                        if($keyPost == 3){
+                                            $setClass= 'row-span-2';
+                                        }elseif ($keyPost == 4 && $countPosts == 4) {
+                                            $setClass= 'col-span-2';
+                                        }elseif ($keyPost == 6 && $countPosts == 6){
+                                            $setClass= 'col-span-3';
+                                        }elseif ($keyPost == 7 && $countPosts == 7){
+                                            $setClass= 'col-span-2';
+                                        }
                                         ?>
-                                        <div class="<?=($keypost == 3) ? 'row-span-3 ':''?>sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold  text-white-800 transition-all duration-500 relative">
+                                        <div class="<?=$setClass;?> sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold  text-white-800 transition-all duration-500 relative">
                                             <a href="<?=get_permalink()?>" class="sm:pr-0 pr-6" target="_self"><?=get_the_title()?></a>
                                             <div class="absolute opacity-0 bottom-3 right-6 group-hover:right-3 group-hover:opacity-100 transition-all duration-500">
                                                 <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
