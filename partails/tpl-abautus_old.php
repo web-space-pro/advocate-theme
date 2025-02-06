@@ -42,7 +42,7 @@ if ( function_exists('get_field') ) {
 
                 <?php if(!empty($ceo_photo)) : ?>
                 <div class="xl:w-2/6 w-full">
-                    <div class="xl:absolute xl:right-0 xl:bottom-0 xl:h-auto xl:w-[42vw] h-96">
+                    <div class="xl:absolute xl:right-0 xl:bottom-0 2xl:h-[90%] 3xl:h-full 3xl:w-[40%] xl:h-[85%] h-96">
                         <figure class="w-full h-full">
                             <img class="xl:object-cover w-full h-full object-contain" src="<?=$ceo_photo['url']?>" alt="<?= get_bloginfo(); ?>" width="<?=$ceo_photo['width']?>" height="<?=$ceo_photo['height']?>">
                         </figure>
