@@ -70,11 +70,11 @@ if ( function_exists('get_field') ) {
                            if($keyPost == 3){
                                $setClass= 'row-span-2';
                            }elseif ($keyPost == 4 && $countPosts == 4) {
-                               $setClass= 'col-span-2';
+                               $setClass= 'xs:col-span-2';
                            }elseif ($keyPost == 6 && $countPosts == 6){
-                               $setClass= 'col-span-3';
+                               $setClass= 'xs:col-span-3';
                            }elseif ($keyPost == 7 && $countPosts == 7){
-                               $setClass= 'col-span-2';
+                               $setClass= 'xs:col-span-2';
                            }
                        ?>
                            <div class="<?=$setClass;?> sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group relative overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold text-white-800 transition-all duration-500">

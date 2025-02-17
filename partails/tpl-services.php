@@ -63,7 +63,7 @@ $terms = get_terms([
                         if (!empty($terms) && !is_wp_error($terms)):
                             foreach ($terms as $key=>$term):
                                 ?>
-                        <div class="panel xs:gap-x-4 xs:grid-cols-3 md:gap-x-6 grid grid-cols-1  absolute top-0  w-full justify-center transition duration-500 <?=($key==0)? 'visible opacity-100 scale-100' :'invisible opacity-0 scale-90'?>" id="panel-<?=$key?>">
+                        <div class="panel xs:grid-cols-3 md:gap-x-6 grid grid-cols-1 gap-x-4  absolute top-0  w-full justify-center transition duration-500 <?=($key==0)? 'visible opacity-100 scale-100' :'invisible opacity-0 scale-90'?>" id="panel-<?=$key?>">
                         <?php
                                 // Получаем посты из текущего термина
                                 $query = new WP_Query([
@@ -90,11 +90,11 @@ $terms = get_terms([
                                         if($keyPost == 3){
                                             $setClass= 'row-span-2';
                                         }elseif ($keyPost == 4 && $countPosts == 4) {
-                                            $setClass= 'col-span-2';
+                                            $setClass= 'xs:col-span-2';
                                         }elseif ($keyPost == 6 && $countPosts == 6){
-                                            $setClass= 'col-span-3';
+                                            $setClass= 'xs:col-span-3';
                                         }elseif ($keyPost == 7 && $countPosts == 7){
-                                            $setClass= 'col-span-2';
+                                            $setClass= 'xs:col-span-2';
                                         }
                                         ?>
                                         <div class="<?=$setClass;?> sm:px-5 md:mb-6 md:text-xl xl:text-2xl py-3 px-2.5 mb-4 text-sm group overflow-hidden border border-gray-300 bg-black-600 rounded-md font-semibold  text-white-800 transition-all duration-500 relative">

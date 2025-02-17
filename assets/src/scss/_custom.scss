@@ -36,6 +36,10 @@ a {
 }
 .t-overflow{
   overflow: hidden;
+  pointer-events: none;
+  .btn-menu-toggle, .menu-mobile {
+    pointer-events: auto;
+  }
 }
 
 
